@@ -156,7 +156,7 @@ bool Game::gameOver(int newX, int newY)
     if(isValidMove(newX - (knight.cellSize * 2), newY - knight.cellSize)) check += 1;
     if(isValidMove(newX + (knight.cellSize * 2), newY - knight.cellSize)) check += 1;
     if(isValidMove(newX - (knight.cellSize * 2), newY + knight.cellSize)) check += 1;
-    if(isValidMove(newX - (knight.cellSize * 2), newY + knight.cellSize)) check += 1;
+    if(isValidMove(newX + (knight.cellSize * 2), newY + knight.cellSize)) check += 1;
 
     if(isValidMove(newX - knight.cellSize, newY - (knight.cellSize * 2))) check += 1;
     if(isValidMove(newX - knight.cellSize, newY + (knight.cellSize * 2))) check += 1;
