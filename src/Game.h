@@ -1,5 +1,9 @@
+#pragma once
 #include "Grid.h"
 #include "knight.h"
+#include <vector>
+#include <raylib.h>
+
 
 class Game
 {
@@ -8,7 +12,10 @@ public:
     void handleInput();
     void Print();
     bool isValidMove(int newX, int newY);
+    bool gameOver(int x, int y);
+    std::vector<Vector2> traveledTiles;
+
     Grid grid;
     Knight knight;
-    bool running = true;
+    void reset();
 };

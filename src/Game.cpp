@@ -1,6 +1,10 @@
 #include "Game.h"
 #include "colors.h"
+#include <raylib.h>
+#include <vector>
+#include <cstdlib>
 
+Font font = LoadFontEx("Font/monogram.ttf", 64, 0, 0);
 
 void Game::Draw()
 {
@@ -15,6 +19,12 @@ void Game::Print()
 
 void Game::handleInput()
 {
+
+    if(gameOver(knight.x, knight.y) && GetKeyPressed() != 0)
+    {
+        reset();
+    }
+
     if(IsKeyDown(KEY_LEFT) && IsKeyPressed(KEY_UP))
     {
         int newY = knight.y - knight.cellSize;
@@ -22,103 +32,145 @@ void Game::handleInput()
 
         if(isValidMove(newX, newY))
         {
+            grid.grid[knight.y/100][knight.x/100] = 5;
+            traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
         }
     }
-
-    if(IsKeyDown(KEY_RIGHT) && IsKeyPressed(KEY_UP))
+    else if(IsKeyDown(KEY_RIGHT) && IsKeyPressed(KEY_UP))
     {
         int newY = knight.y - knight.cellSize;
         int newX = knight.x + (knight.cellSize * 2);
 
         if(isValidMove(newX, newY))
         {
+            grid.grid[knight.y/100][knight.x/100] = 5;
+            traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
         }
     }
-
-    if(IsKeyDown(KEY_LEFT) && IsKeyPressed(KEY_DOWN))
+    else if(IsKeyDown(KEY_LEFT) && IsKeyPressed(KEY_DOWN))
     {
         int newY = knight.y + knight.cellSize;
         int newX = knight.x - (knight.cellSize * 2);
 
         if(isValidMove(newX, newY))
         {
+            grid.grid[knight.y/100][knight.x/100] = 5;
+            traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
         }
     }
-
-    if(IsKeyDown(KEY_RIGHT) && IsKeyPressed(KEY_DOWN))
+    else if(IsKeyDown(KEY_RIGHT) && IsKeyPressed(KEY_DOWN))
     {
         int newY = knight.y + knight.cellSize;
         int newX = knight.x + (knight.cellSize * 2);
 
         if(isValidMove(newX, newY))
         {
+            grid.grid[knight.y/100][knight.x/100] = 5;
+            traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
         }
     }
-
-    if(IsKeyDown(KEY_UP) && IsKeyPressed(KEY_LEFT))
+    else if(IsKeyDown(KEY_UP) && IsKeyPressed(KEY_LEFT))
     {
         int newY = knight.y - (knight.cellSize * 2);
         int newX = knight.x - knight.cellSize;
 
         if(isValidMove(newX, newY))
         {
+            grid.grid[knight.y/100][knight.x/100] = 5;
+            traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
         }
     }
-
-    if(IsKeyDown(KEY_DOWN) && IsKeyPressed(KEY_LEFT))
+    else if(IsKeyDown(KEY_DOWN) && IsKeyPressed(KEY_LEFT))
     {
         int newY = knight.y + (knight.cellSize * 2);
         int newX = knight.x - knight.cellSize;
 
         if(isValidMove(newX, newY))
         {
+            grid.grid[knight.y/100][knight.x/100] = 5;
+            traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
         }
     }
-
-    if(IsKeyDown(KEY_UP) && IsKeyPressed(KEY_RIGHT))
+    else if(IsKeyDown(KEY_UP) && IsKeyPressed(KEY_RIGHT))
     {
         int newY = knight.y - (knight.cellSize * 2);
         int newX = knight.x + knight.cellSize;
 
         if(isValidMove(newX, newY))
         {
+            grid.grid[knight.y/100][knight.x/100] = 5;
+            traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
         }
     }
-
-    if(IsKeyDown(KEY_DOWN) && IsKeyPressed(KEY_RIGHT))
+    else if(IsKeyDown(KEY_DOWN) && IsKeyPressed(KEY_RIGHT))
     {
         int newY = knight.y + (knight.cellSize * 2);
         int newX = knight.x + knight.cellSize;
 
         if(isValidMove(newX, newY))
         {
+            grid.grid[knight.y/100][knight.x/100] = 5;
+            traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
         }
     }
+    
 }
 
 bool Game::isValidMove(int newX, int newY)
 {
-    if(newX < 0 || newX >= 500 ||
-       newY < 0 || newY >= 500)
+    if(newX < 0 || newX > 400 || newY < 0 || newY > 400)
     {
         return false;
     }
 
+    for(Vector2 tile: traveledTiles)
+    {
+        if(tile.x == newX && tile.y == newY)
+        {
+            return false;
+        }
+    }
     return true;
+}
+
+bool Game::gameOver(int newX, int newY)
+{
+    int check = 0;
+    
+    if(isValidMove(newX - (knight.cellSize * 2), newY - knight.cellSize)) check += 1;
+    if(isValidMove(newX + (knight.cellSize * 2), newY - knight.cellSize)) check += 1;
+    if(isValidMove(newX - (knight.cellSize * 2), newY + knight.cellSize)) check += 1;
+    if(isValidMove(newX - (knight.cellSize * 2), newY + knight.cellSize)) check += 1;
+
+    if(isValidMove(newX - knight.cellSize, newY - (knight.cellSize * 2))) check += 1;
+    if(isValidMove(newX - knight.cellSize, newY + (knight.cellSize * 2))) check += 1;
+    if(isValidMove(newX + knight.cellSize, newY - (knight.cellSize * 2))) check += 1;
+    if(isValidMove(newX + knight.cellSize, newY + (knight.cellSize * 2))) check += 1;
+
+    if(check > 0) return false;
+    return true;
+}
+
+void Game::reset()
+{
+    traveledTiles.clear();
+    grid.Initialization();
+    knight.x = (rand() % 5) * knight.cellSize;
+    knight.y = (rand() % 5) * knight.cellSize;
 }
