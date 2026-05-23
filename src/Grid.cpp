@@ -3,36 +3,44 @@
 #include <iostream>
 using namespace std;
 
-Grid::Grid() : numRows{6}, numCols{6}, cellSize{30} { Initialization(); colors = getCellColors(); }
+Grid::Grid() : numRows{5}, numCols{5}, cellSize{100} { Initialization(); colors = getCellColors(); }
 
 void Grid::Initialization()
 {
-    for(int i = 0; i < numRows * 6; i++)
+    for(int i = 0; i < numRows; i++)
     {
-        for(int j = 0; j < numCols * 6; j++)
+        for(int j = 0; j < numCols; j++)
         {
-            grid[i][j] = 0;
+            if((i + j) % 2 == 0)
+            {
+                grid[i][j] = 0; // black
+            }
+            else
+            {
+                grid[i][j] = 1; // white
+            }
         }
     }
 }
 
 void Grid::Draw()
 {
-    for(int i = 0; i < numRows * 6; i++)
+    for(int i = 0; i < numRows; i++)
     {
-        for(int j = 0; j < numCols * 6; j++)
+        for(int j = 0; j < numCols; j++)
         {
             int cellValue = grid[i][j];
-            DrawRectangle(j * cellSize+1, i * cellSize+1, cellSize-1, cellSize-1, colors[cellValue]); 
+            DrawRectangle(j * cellSize, i * cellSize, cellSize, cellSize, colors[cellValue]); 
+            // (1,1 100,100) (101,101 200,200)  
         }
     }
 }
 
 void Grid::Print()
 {
-    for(int i = 0; i < numRows * 6; i+= 6)
+    for(int i = 0; i < numRows; i++)
     {
-        for(int j = 0; j < numCols * 6; j+= 6)
+        for(int j = 0; j < numCols; j++)
         {
             cout << grid[i][j] << " ";
         }

@@ -1,12 +1,2 @@
-It will be a 6x6
+A 5x5 game where the knight moves around trying to fill up the whole board. 
 
-each cell is 30 pixels wide and long
-
-Each cell will be 6 pixels by 6;
-
-width = 30 * 
-
-
-cellSize = 30
-
-So in DrawRect we are essentially doing 1 - 30, 31 - 50

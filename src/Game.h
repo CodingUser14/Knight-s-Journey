@@ -1,10 +1,14 @@
-#include "grid.h"
+#include "Grid.h"
+#include "knight.h"
 
 class Game
 {
 public:
-    Game();
     void Draw();
+    void handleInput();
     void Print();
+    bool isValidMove(int newX, int newY);
     Grid grid;
+    Knight knight;
+    bool running = true;
 };

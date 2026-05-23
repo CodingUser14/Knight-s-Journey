@@ -10,9 +10,8 @@ public:
     void Initialization();
     void Draw();
     void Print();
-    int grid[36][36];
+    int grid[5][5];
 
-private:
     int numRows;
     int numCols;
     int cellSize;
