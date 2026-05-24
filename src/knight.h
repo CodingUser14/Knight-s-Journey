@@ -6,6 +6,7 @@ class Knight
 public:
     Knight();
     void Draw();
+    void ResetKnightPosition();
     int x;
     int y;
     int cell;

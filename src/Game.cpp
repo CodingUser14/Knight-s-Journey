@@ -186,7 +186,6 @@ void Game::reset()
 {
     traveledTiles.clear();
     grid.Initialization();
-    knight.x = (rand() % 5) * knight.cellSize;
-    knight.y = (rand() % 5) * knight.cellSize;
+    knight.ResetKnightPosition();
     tile = 0;
 }

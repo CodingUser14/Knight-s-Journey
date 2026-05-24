@@ -4,6 +4,18 @@
 
 Knight::Knight()
 {
+    ResetKnightPosition();
+    cellSize = 100;
+    color = getCellColors()[2];
+}
+
+void Knight::Draw()
+{
+    DrawRectangle(x, y, cellSize, cellSize, color);
+}
+
+void Knight::ResetKnightPosition()
+{
     cell = (rand() % 13);
     switch(cell)
     {
@@ -60,13 +72,5 @@ Knight::Knight()
             y = 400;
             break;
     }
-    printf("%d", cell);
-    cellSize = 100;
-    color = getCellColors()[2];
-}
-
-void Knight::Draw()
-{
-    DrawRectangle(x, y, cellSize, cellSize, color);
 }
 
