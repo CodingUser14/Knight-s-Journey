@@ -6,6 +6,10 @@
 
 Font font = LoadFontEx("Font/monogram.ttf", 64, 0, 0);
 
+Game::Game() : score{0}, tile{0} { grid = Grid(); }
+
+Game::~Game() {}
+
 void Game::Draw()
 {
     grid.Draw();
@@ -22,6 +26,9 @@ void Game::handleInput()
 
     if(gameOver(knight.x, knight.y) && GetKeyPressed() != 0)
     {
+        if(tile == 24){
+            score++;
+        }
         reset();
     }
 
@@ -36,6 +43,7 @@ void Game::handleInput()
             traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
+            tile++;
         }
     }
     else if(IsKeyDown(KEY_RIGHT) && IsKeyPressed(KEY_UP))
@@ -49,6 +57,7 @@ void Game::handleInput()
             traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
+            tile++;
         }
     }
     else if(IsKeyDown(KEY_LEFT) && IsKeyPressed(KEY_DOWN))
@@ -62,6 +71,7 @@ void Game::handleInput()
             traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
+            tile++;
         }
     }
     else if(IsKeyDown(KEY_RIGHT) && IsKeyPressed(KEY_DOWN))
@@ -75,6 +85,7 @@ void Game::handleInput()
             traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
+            tile++;
         }
     }
     else if(IsKeyDown(KEY_UP) && IsKeyPressed(KEY_LEFT))
@@ -88,6 +99,7 @@ void Game::handleInput()
             traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
+            tile++;
         }
     }
     else if(IsKeyDown(KEY_DOWN) && IsKeyPressed(KEY_LEFT))
@@ -101,6 +113,7 @@ void Game::handleInput()
             traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
+            tile++;
         }
     }
     else if(IsKeyDown(KEY_UP) && IsKeyPressed(KEY_RIGHT))
@@ -114,6 +127,7 @@ void Game::handleInput()
             traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
+            tile++;
         }
     }
     else if(IsKeyDown(KEY_DOWN) && IsKeyPressed(KEY_RIGHT))
@@ -127,6 +141,7 @@ void Game::handleInput()
             traveledTiles.push_back({(float)knight.x, (float)knight.y});
             knight.x = newX;
             knight.y = newY;
+            tile++;
         }
     }
     
@@ -173,4 +188,5 @@ void Game::reset()
     grid.Initialization();
     knight.x = (rand() % 5) * knight.cellSize;
     knight.y = (rand() % 5) * knight.cellSize;
+    tile = 0;
 }

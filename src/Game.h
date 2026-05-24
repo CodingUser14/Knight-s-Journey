@@ -8,6 +8,8 @@
 class Game
 {
 public:
+    Game();
+    ~Game();
     void Draw();
     void handleInput();
     void Print();
@@ -18,4 +20,6 @@ public:
     Grid grid;
     Knight knight;
     void reset();
+    int score;
+    int tile;
 };
