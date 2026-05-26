@@ -17,6 +17,7 @@ public:
     bool gameOver(int x, int y);
     std::vector<Vector2> traveledTiles;
 
+    //cheat button 
     Grid grid;
     Knight knight;
     void reset();
