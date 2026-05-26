@@ -20,10 +20,7 @@ Vector2 Cheat::getNextMove()
         visited[(int)tile.x/100][(int)tile.y/100] = true;
     }
 
-    int currX = game.knight.x;
-    int currY = game.knight.y;
-
-    if(algorithim(currX, currY))
+    if(algorithim(game.knight.x, game.knight.y))
     {
         return winningpath.at(1);
     }
@@ -54,8 +51,7 @@ bool Cheat::algorithim(int currX, int currY)
     visited[row][col] = true;
     visitedCount++; 
 
-    if(visitedCount == 25 - game.traveledTiles.size())
-        return true;
+    if(visitedCount == 25 - game.traveledTiles.size()) return true;
 
     int dx[8] = { -2, 2, -2, 2, -1, -1, 1, 1 };
     int dy[8] = { -1, -1, 1, 1, -2, 2, -2, 2 };
@@ -81,6 +77,5 @@ bool Cheat::algorithim(int currX, int currY)
     winningpath.pop_back();
     visited[row][col] = false;
     visitedCount--; 
-
     return false;
 }

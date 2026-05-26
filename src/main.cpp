@@ -18,7 +18,8 @@ int main()
     Font font = LoadFontEx("Font/monogram.ttf", 64, 0, 0);
     printf("%d", game.knight.cell);
     int showcheat = false;
-
+    int prevMove = game.knight.x;
+    Vector2 hintMove = cheat.getNextMove();
 
     while(WindowShouldClose() == false)
     {
@@ -26,7 +27,6 @@ int main()
         Color green = {173, 204, 96, 255};
         BeginDrawing();
         ClearBackground(green);
-        Vector2 hintMove;
 
         DrawTextEx(font, "Score: ", {520, 30}, 38, 2, WHITE);      
         
@@ -47,17 +47,17 @@ int main()
         {
             showcheat = !showcheat;
         }
-        if(showcheat)
+        if(showcheat && !game.gameOver(game.knight.x, game.knight.y))
         {
-            hintMove = cheat.getNextMove();
-            cout << " " << hintMove.x << " " << hintMove.y << "|";
-            if(cheat.visitedCount == 0)
+            if(prevMove != game.knight.x) //cause curr x can never be the same as prev
             {
-                game.reset();
+                hintMove = cheat.getNextMove();
+                prevMove = game.knight.x;
+                cout << hintMove.x << " " << hintMove.y;
             }
-            else if(hintMove.x == -1 && hintMove.y == -1)
+            if(hintMove.x == -1 && hintMove.y == -1)
             {
-                DrawTextEx(font, "You can't Win. Press R", {320, 650}, 38, 2, WHITE);
+                DrawTextEx(font, "You can't Win. Press R", {400, 450}, 38, 2, WHITE);
             }
             else
             {
@@ -67,6 +67,8 @@ int main()
         if(IsKeyPressed(KEY_R))
         {
             game.reset();
+            prevMove = game.knight.x;
+            hintMove = cheat.getNextMove();
         }
 
         EndDrawing();
