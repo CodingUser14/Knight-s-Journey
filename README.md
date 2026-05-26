@@ -48,6 +48,7 @@ This project was built using **C++** and **raylib**. The raylib template provide
 git clone <Repo Link>
 cd ./src
 ./main
+```
 
 ## Currently Working on:
 UI Changes
