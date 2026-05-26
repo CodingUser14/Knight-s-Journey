@@ -32,6 +32,23 @@ Movement uses only the the arrow keys.
 9. Press r - Resets the board
 10. Press c - Activates cheats; guides you to the solution
 
+## How to Run
+
+This project was built using **C++** and **raylib**. The raylib template provides the project structure and build configuration, while the actual compilation is handled by a C++ compiler such as `g++`.
+
+### Requirements
+
+- C++ compiler
+- raylib
+- Make
+
+### Steps
+
+```bash
+git clone <Repo Link>
+cd ./src
+./main
+
 ## Currently Working on:
 UI Changes
 
