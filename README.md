@@ -2,7 +2,7 @@
 
 Knight's Journey is a small 2D Game inspired by the knight in the game of Chess. 
 
-![Knight's Journey](Photos/Game 1.png)
+![Knight's Journey](Photos/Game_1.png)
 
 The objective of the game is to get the knight to travel every tile in the 5x5 grid space.
 It can't travel to a tile that's it already visited. 
