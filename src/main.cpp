@@ -36,7 +36,11 @@ int main()
         DrawTextEx(font, scoreText, {500 + (100 - textSize.x)/2, 70}, 38, 2, WHITE);
         game.Draw(); 
 
-        DrawTextEx(font, "Press C for cheats", {320, 600}, 38, 2, WHITE);
+        DrawTextEx(font, "Press R", {510, 170}, 20, 2, BLUE);
+        DrawTextEx(font, "to Restart", {510, 185}, 20, 2, BLUE);
+
+        DrawTextEx(font, "Press C", {510, 130}, 20, 2, BLUE);
+        DrawTextEx(font, "for cheats", {510, 145}, 20, 2, BLUE);
 
         if(game.gameOver(game.knight.x, game.knight.y))
         {
@@ -57,7 +61,10 @@ int main()
             }
             if(hintMove.x == -1 && hintMove.y == -1)
             {
-                DrawTextEx(font, "You can't Win. Press R", {400, 450}, 38, 2, WHITE);
+                DrawTextEx(font, "You", {510, 360}, 38, 2, BLACK);
+                DrawTextEx(font, "can't", {510, 385}, 38, 2, BLACK);
+                DrawTextEx(font, "win", {510, 410}, 38, 2, BLACK);
+                DrawTextEx(font, "Press R", {510, 435}, 38, 2, BLACK);
             }
             else
             {

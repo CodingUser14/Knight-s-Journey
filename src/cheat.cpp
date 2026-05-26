@@ -51,7 +51,7 @@ bool Cheat::algorithim(int currX, int currY)
     visited[row][col] = true;
     visitedCount++; 
 
-    if(visitedCount == 25 - game.traveledTiles.size()) return true;
+    if(visitedCount == 25 - (int)game.traveledTiles.size()) return true;
 
     int dx[8] = { -2, 2, -2, 2, -1, -1, 1, 1 };
     int dy[8] = { -1, -1, 1, 1, -2, 2, -2, 2 };
