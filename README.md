@@ -8,12 +8,14 @@ The objective of the game is to get the knight to travel every tile in the 5x5 g
 It can't travel to a tile that's it already visited. 
 Just like in the game of chess the knight can only move in a L shape. 
 
-## Feature: 
+## Features: 
 - Red tile represents the Knight.
 - Black tile represents visited tile.
 - White or Brown tiles are unvisited tiles.
 - Score++ for every completed travel.
 - Mini Chess Board interface. 
+- Cheating Mechanic: Guides you the solution
+- Reset 
 
 ## Controls: 
 Movement uses only the the arrow keys. 
@@ -26,8 +28,11 @@ Movement uses only the the arrow keys.
 7. Hold down, press Right: down three, right one
 8. Hold down, press Left: down three, left one
 
+9. Press r - Resets the board
+10. Press c - Activates cheats; guides you to the solution
+
 ## Currently Working on:
-Working on a cheat mechanic where it helps the user get the answer 
+
 
 ## Future Improvements: 
 - Add a 7x7 level.
