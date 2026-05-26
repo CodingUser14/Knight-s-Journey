@@ -12,6 +12,7 @@ Just like in the game of chess the knight can only move in a L shape.
 - Red tile represents the Knight.
 - Black tile represents visited tile.
 - White or Brown tiles are unvisited tiles.
+- Yellow circle is the cheat tile. The knight should traverse to it. 
 - Score++ for every completed travel.
 - Mini Chess Board interface. 
 - Cheating Mechanic: Guides you the solution
