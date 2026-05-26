@@ -26,6 +26,9 @@ Movement uses only the the arrow keys.
 7. Hold down, press Right: down three, right one
 8. Hold down, press Left: down three, left one
 
+## Currently Working on:
+Working on a cheat mechanic where it helps the user get the answer 
+
 ## Future Improvements: 
 - Add a 7x7 level.
 - Add  graphics for the knight and visited tiles. 

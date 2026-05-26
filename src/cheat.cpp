@@ -8,19 +8,23 @@ Cheat::Cheat(Game& game) : game(game) { visitedCount = 0; }
 Vector2 Cheat::getNextMove()
 {   
     winningpath.clear();
+
+    for (int row = 0; row < 5; row++) {
+        for (int col = 0; col < 5; col++) {
+            visited[row][col] = false;
+        }
+    }
+    visitedCount = 0;
     for(auto tile: game.traveledTiles)
     {
         visited[(int)tile.x/100][(int)tile.y/100] = true;
     }
-
-    visitedCount = 0;
 
     int currX = game.knight.x;
     int currY = game.knight.y;
 
     if(algorithim(currX, currY))
     {
-        cout << visitedCount;
         return winningpath.at(1);
     }
     return {-1, -1};
@@ -42,31 +46,41 @@ if there is a valid path and false if not.
 */
 bool Cheat::algorithim(int currX, int currY)
 { 
+    int row = currX / 100;
+    int col = currY / 100;
+
     winningpath.push_back({(float)currX, (float)currY});
 
-    if(visitedCount == 25) return true;
-
-    visited[currX/100][currY/100] = true;
+    visited[row][col] = true;
     visitedCount++; 
+
+    if(visitedCount == 25 - game.traveledTiles.size())
+        return true;
 
     int dx[8] = { -2, 2, -2, 2, -1, -1, 1, 1 };
     int dy[8] = { -1, -1, 1, 1, -2, 2, -2, 2 };
-    int nextX;
-    int nextY;
 
     for(int i = 0; i < 8; i++)
     {
-        nextX = currX + dx[i] * game.knight.cellSize;
-        nextY = currY + dy[i] * game.knight.cellSize;
+        int nextX = currX + dx[i] * game.knight.cellSize;
+        int nextY = currY + dy[i] * game.knight.cellSize;
 
-        if(visited[nextX/100][nextY/100] && game.isValidMove(nextX, nextY)) //Keeps track of hyporthically visited tiles
+        if(game.isValidMove(nextX, nextY))
         {
-            if(algorithim(nextX, nextY)) return true;
+            int nextRow = nextX / 100;
+            int nextCol = nextY / 100;
+
+            if(!visited[nextRow][nextCol])
+            {
+                if(algorithim(nextX, nextY))
+                    return true;
+            }
         }
     }
 
     winningpath.pop_back();
-    visited[nextX/100][nextY/100] = false;
+    visited[row][col] = false;
     visitedCount--; 
+
     return false;
 }

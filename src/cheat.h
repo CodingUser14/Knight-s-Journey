@@ -13,14 +13,14 @@ public:
 
     bool algorithim(int x, int y);
     Vector2 getNextMove();
+    int visitedCount;
+
 
 private:
     Game& game;
     vector<Vector2> winningpath;
 
     bool visited[5][5];
-
-    int visitedCount;
     Color color;
     int cellSize;
 
