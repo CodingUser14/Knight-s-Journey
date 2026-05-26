@@ -32,7 +32,7 @@ Movement uses only the the arrow keys.
 10. Press c - Activates cheats; guides you to the solution
 
 ## Currently Working on:
-
+UI Changes
 
 ## Future Improvements: 
 - Add a 7x7 level.
