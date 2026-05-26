@@ -46,7 +46,7 @@ This project was built using **C++** and **raylib**. The raylib template provide
 
 ```bash
 git clone <Repo Link>
-cd ./src
+cd "Knight's Journey"
 ./main
 ```
 
