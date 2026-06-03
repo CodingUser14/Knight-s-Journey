@@ -74,6 +74,7 @@ bool Cheat::algorithim(int currX, int currY)
         }
     }
 
+    //Problem with 0, 200 starting point
     winningpath.pop_back();
     visited[row][col] = false;
     visitedCount--; 

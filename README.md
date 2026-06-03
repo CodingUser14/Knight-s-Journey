@@ -52,6 +52,7 @@ cd "Knight's Journey"
 
 ## Currently Working on:
 UI Changes
+Unusual Bug in the Algorithim where it may give the wrong valu
 
 ## Future Improvements: 
 - Add a 7x7 level.

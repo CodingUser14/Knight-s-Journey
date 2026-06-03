@@ -46,7 +46,11 @@ int main()
         {
             DrawTextEx(font, "GAME OVER", {320, 450}, 38, 2, WHITE); // text
         }
-
+        else
+        {
+            hintMove = cheat.getNextMove();
+        }
+        
         if(IsKeyPressed(KEY_C))
         {
             showcheat = !showcheat;
@@ -55,7 +59,6 @@ int main()
         {
             if(prevMove != game.knight.x) //cause curr x can never be the same as prev
             {
-                hintMove = cheat.getNextMove();
                 prevMove = game.knight.x;
                 cout << hintMove.x << " " << hintMove.y;
             }
@@ -74,8 +77,6 @@ int main()
         if(IsKeyPressed(KEY_R))
         {
             game.reset();
-            prevMove = game.knight.x;
-            hintMove = cheat.getNextMove();
         }
 
         EndDrawing();
